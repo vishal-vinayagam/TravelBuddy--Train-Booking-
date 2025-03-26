@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Booking - Tamil Nadu Govt Railways</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f4f9;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 34px;
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border: 2px solid #007bff;
+            box-shadow: 0 0 10px #007bff;
+        }
+
+        button {
+            background: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .qr-button {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            background: #28a745;
+            color: #fff;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .qr-button img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .qr-button:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+
+        .ticket-box {
+            display: none;
+            background: #ffffff;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 850px;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px auto;
+            animation: fadeIn 0.5s;
+        }
+
+        .ticket-header {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .ticket-header h3 {
+            font-size: 28px;
+        }
+
+        .ticket-header p {
+            font-size: 18px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .ticket-details {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            background: #f1f1f1;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            gap: 20px;
+        }
+
+        .ticket-details div {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .ticket-details p {
+            font-size: 16px;
+            margin: 4px 0;
+        }
+
+        .ticket-details span {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .ticket-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 26px;
+            }
+
+            .ticket-details {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🚆 Train Booking - Tamil Nadu Govt Railways</h2>
+
+    <form id="bookingForm">
+        <label for="name">Passenger Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+
+        <label for="from">From:</label>
+        <input type="text" id="from" placeholder="Enter Departure Station" required>
+
+        <label for="to">To:</label>
+        <input type="text" id="to" placeholder="Enter Arrival Station" required>
+
+        <label for="trainNumber">Train No:</label>
+        <input type="text" id="trainNumber" value="12678" readonly>
+
+        <label for="trainName">Train Name:</label>
+        <input type="text" id="trainName" value="Chennai Express" readonly>
+
+        <label for="pnr">PNR:</label>
+        <input type="text" id="pnr" value="784512369" readonly>
+
+        <label for="seat">Seat No:</label>
+        <input type="text" id="seat" placeholder="Enter Seat Number" required>
+
+        <label for="class">Class:</label>
+        <select id="class" required>
+            <option value="AC First Class">AC First Class</option>
+            <option value="AC 2 Tier">AC 2 Tier</option>
+            <option value="AC 3 Tier">AC 3 Tier</option>
+            <option value="Sleeper">Sleeper</option>
+        </select>
+
+        <label for="payment">UPI ID:</label>
+        <input type="text" id="payment" placeholder="Enter UPI ID" required>
+
+        <button type="submit">Book Now</button>
+    </form>
+
+    <div id="qrButton" class="qr-button" onclick="showTicket()">
+        <img src="images/Qr Code.png" alt="QR Code">
+        <span>Confirm & View Ticket</span>
+    </div>
+
+    <div id="ticketBox" class="ticket-box"></div>
+</div>
+
+<script>
+    const bookingForm = document.getElementById("bookingForm");
+    const qrButton = document.getElementById("qrButton");
+    const ticketBox = document.getElementById("ticketBox");
+
+    bookingForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        qrButton.style.display = "flex";
+        alert("✅ Booking Confirmed! Click the button to view your ticket.");
+    });
+
+    function showTicket() {
+        const name = document.getElementById("name").value;
+        const from = document.getElementById("from").value;
+        const to = document.getElementById("to").value;
+        const seat = document.getElementById("seat").value;
+        const cls = document.getElementById("class").value;
+        const payment = document.getElementById("payment").value;
+
+        ticketBox.innerHTML = `
+            <div class="ticket-header">
+                <h3>Tamil Nadu Government Railways</h3>
+                <p>Passenger: <span>${name}</span></p>
+                <p>From: ${from} → To: ${to}</p>
+            </div>
+            <div class="ticket-details">
+                <div>Seat: <span>${seat}</span></div>
+                <div>Class: <span>${cls}</span></div>
+                <div>UPI ID: <span>${payment}</span></div>
+            </div>
+        `;
+        ticketBox.style.display = "block";
+    }
+</script>
+
+</body>
+</html>

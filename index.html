@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TravelBuddy - Travel Booking</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ==================== NAVBAR ==================== -->
+<nav class="navbar">
+  <div class="logo">Travel<span>Buddy</span></div>
+  <ul class="nav-links">
+    <li><a href="#">Flights</a></li>
+    <li><a href="#">Hotels</a></li>
+    <li><a href="#" class="active">Trains</a></li>
+    <li><a href="#">Bus</a></li>
+    <li><a href="#">Cabs</a></li>
+  </ul>
+  <div class="auth-buttons">
+    <!-- ✅ Login button with navigation -->
+    <button class="login-btn" onclick="navigateToLogin()">Login</button>
+  </div>
+</nav>
+
+<!-- ==================== HERO SECTION WITH SMALL IMAGE ==================== -->
+<section class="hero-section">
+  <div class="small-image-container">
+    <img src="images/small-train-icon.jpg" alt="Train Icon" class="small-image">
+  </div>
+
+  <div class="booking-container">
+    <form id="bookingForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="from">From</label>
+          <input type="text" id="from" placeholder="Tiruppur (TUP)" required>
+        </div>
+
+        <div class="form-group">
+          <label for="to">To</label>
+          <input type="text" id="to" placeholder="Bommidi (BQI)" required>
+        </div>
+
+        <div class="form-group">
+          <label for="date">Travel Date</label>
+          <input type="date" id="date" required>
+        </div>
+
+        <div class="form-group">
+          <label for="class">Class</label>
+          <select id="class" required>
+            <option value="All">All Classes</option>
+            <option value="Sleeper">Sleeper</option>
+            <option value="3AC">3AC</option>
+            <option value="2AC">2AC</option>
+            <option value="1AC">1AC</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ✅ Search button with navigation -->
+      <button type="submit" class="search-btn" onclick="navigateToSearch()">SEARCH</button>
+    </form>
+  </div>
+
+  <div class="content">
+    <h1>Explore the World</h1>
+    <p>Find your next destination with us!</p>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <p>© 2025 TravelBuddy | Travel Booking</p>
+</footer>
+
+<script>
+  // ✅ Navigate to the search page
+  function navigateToSearch() {
+    window.location.href = "file:///C:/Users/vvish/OneDrive/Desktop/Book%20Train%20Ticket/search.html";
+  }
+
+  // ✅ Navigate to the login page
+  function navigateToLogin() {
+    window.location.href = "file:///C:/Users/vvish/OneDrive/Desktop/Book%20Train%20Ticket/login-form.html";
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+/* ============= RESET ============= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* ============= NAVBAR ============= */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 20px 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .logo span {
+    color: #ff5733;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+  }
+  
+  .nav-links li a {
+    text-decoration: none;
+    color: #555;
+    font-size: 16px;
+    transition: color 0.3s;
+  }
+  
+  .nav-links li a:hover,
+  .nav-links li a.active {
+    color: #007bff;
+  }
+  
+  .auth-buttons button {
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: 0.3s;
+  }
+  
+  .login-btn {
+    background: #007bff;
+    color: white;
+  }
+  
+  .signup-btn {
+    background: #ff5733;
+    color: white;
+  }
+  
+  .login-btn:hover, .signup-btn:hover {
+    opacity: 0.9;
+  }
+  
+  /* ============= HERO SECTION ============= */
+  /* HERO SECTION BACKGROUND IMAGE */
+.hero-section {
+  height: 90vh;
+  background: url('images/background.jpg') no-repeat center center/cover; 
+  position: relative;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+}
+
+  
+  /* ============= SMALL IMAGE AT THE TOP ============= */
+  .small-image-container {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+  }
+  
+  .small-image {
+    width: 120px;
+    height: auto;
+    border-radius: 15%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
+  }
+  
+  .small-image:hover {
+    transform: scale(1.1);
+  }
+  
+  /* ============= BOOKING FORM ============= */
+  .booking-container {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    padding: 30px;
+    width: 80%;
+    max-width: 1100px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    z-index: 2;
+  }
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .form-group {
+    flex: 1;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* ============= SEARCH BUTTON ============= */
+  .search-btn {
+    width: 100%;
+    background: #007bff;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .search-btn:hover {
+    background: #0056b3;
+  }
+  
+  /* ============= HERO CONTENT ============= */
+  .content {
+    position: relative;
+    z-index: 1;
+    top: 40%;
+    transform: translateY(-50%);
+    text-align: center;
+  }
+  
+  .content h1 {
+    font-size: 55px;
+    color: white;
+    margin-bottom: 10px;
+  }
+  
+  .content p {
+    font-size: 20px;
+    color: #f1f1f1;
+  }
+  
+  /* ============= FOOTER ============= */
+  .footer {
+    background: #f1f1f1;
+    text-align: center;
+    padding: 20px;
+    color: #333;
+  }
+  
+  /* ============= RESPONSIVE DESIGN ============= */
+  @media (max-width: 992px) {
+    .form-row {
+      flex-direction: column;
+    }
+    
+    .booking-container {
+      width: 90%;
+    }
+  
+    .small-image {
+      width: 80px;
+    }
+  
+    .content h1 {
+      font-size: 40px;
+    }
+  
+    .content p {
+      font-size: 18px;
+    }
+  }
+  

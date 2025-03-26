@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Availability</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+        .train-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #007bff;
+        }
+        .train-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .route {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #555;
+            margin: 10px 0;
+        }
+        .class-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .class-box {
+            background: #e3f2fd;
+            padding: 12px;
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            margin: 5px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .class-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .class-type {
+            font-size: 16px;
+            color: #333;
+        }
+        .price {
+            font-size: 18px;
+            color: #007bff;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .availability {
+            font-size: 12px;
+            color: green;
+            font-weight: bold;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 style="text-align: center;">🚆 Available Trains</h2>
+    <div id="trainResults"></div>
+</div>
+
+<script>
+    function displayTrains() {
+        let trainResults = document.getElementById("trainResults");
+        trainResults.innerHTML = "";
+
+        let trains = [
+            {
+                name: "Ers Tata Exp",
+                number: "18190",
+                departure: "12:55 PM",
+                arrival: "2:42 PM",
+                from: "Tiruppur",
+                to: "Salem Jn",
+                classes: [
+                    { type: "SL", price: "₹145", availability: "Seats Available" },
+                    { type: "3A", price: "₹505", availability: "Limited Seats" },
+                    { type: "2A", price: "₹710", availability: "Waitlist 10" }
+                ]
+            },
+            {
+                name: "Cbe Sbc Uday Exp",
+                number: "22666",
+                departure: "6:20 AM",
+                arrival: "8:07 AM",
+                from: "Tiruppur",
+                to: "Salem Jn",
+                classes: [
+                    { type: "2S", price: "₹85", availability: "Seats Available" },
+                    { type: "CC", price: "₹315", availability: "Few Seats Left" }
+                ]
+            }
+        ];
+
+        trains.forEach((train, index) => {
+            let trainCard = document.createElement("div");
+            trainCard.classList.add("train-card");
+
+            let classBoxes = train.classes.map((cls, clsIndex) => `
+                <a href="booking.html?train=${index}&class=${clsIndex}" class="class-box">
+                    <div class="class-type">${cls.type}</div>
+                    <div class="price">${cls.price}</div>
+                    <div class="availability">${cls.availability}</div>
+                </a>
+            `).join('');
+
+            trainCard.innerHTML = `
+                <div class="train-header">
+                    <div>${train.name} (#${train.number})</div>
+                </div>
+                <div class="route">
+                    <div>${train.from} <br> <strong>${train.departure}</strong></div>
+                    <div>${train.to} <br> <strong>${train.arrival}</strong></div>
+                </div>
+                <div class="class-row">
+                    ${classBoxes}
+                </div>
+            `;
+
+            trainResults.appendChild(trainCard);
+        });
+    }
+
+    // Load train details on page load
+    window.onload = displayTrains;
+</script>
+
+</body>
+</html>
